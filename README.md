@@ -9,7 +9,7 @@
 Android Studio Build.
 
 ## Show Result
-<img width="500" height="700" src="https://github.com/jackweiwang/Android-FaceDetection-UltraNet-MNN/blob/master/res_img/result.jpg"/>
+![](res_img/result.jpg)
 
 ## MNN Lib Version 
     0.2.1.7
