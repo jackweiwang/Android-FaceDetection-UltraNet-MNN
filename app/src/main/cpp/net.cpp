@@ -97,7 +97,7 @@ int Inference_engine::infer_img(cv::Mat& img, Inference_engine_tensor& out)
 
         std::vector<int> shape = tensorOutPtr->shape();
 
-      auto tensor = reinterpret_cast<MNN::Tensor*>(tensorOutPtr);
+        auto tensor = reinterpret_cast<MNN::Tensor*>(tensorOutPtr);
 
         std::vector <float> destPtr;
         std::unique_ptr<MNN::Tensor> hostTensor(new MNN::Tensor(tensor, tensor->getDimensionType(), true));

@@ -64,8 +64,7 @@ int UltraFace::detect(cv::Mat &raw_image, std::vector<FaceInfo> &face_list ) {
     image_h = raw_image.rows;
     image_w = raw_image.cols;
     cv::Mat image;
-    LOGD("----------------");
-    //cv::flip(raw_image, raw_image, 1);
+
     cv::resize(raw_image, image, cv::Size(in_w, in_h));
 
     Inference_engine_tensor  out;
