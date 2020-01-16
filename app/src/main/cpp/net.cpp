@@ -104,7 +104,7 @@ int Inference_engine::infer_img(cv::Mat& img, Inference_engine_tensor& out)
         tensor->copyToHostTensor(hostTensor.get());
         tensor = hostTensor.get();
 
-        auto size = tensorOutPtr->elementSize();
+        auto size = tensor->elementSize();
         for(int i=0 ; i < size * sizeof(float); i++ )
             destPtr.push_back(tensorOutPtr->host<float>()[i]);
 
