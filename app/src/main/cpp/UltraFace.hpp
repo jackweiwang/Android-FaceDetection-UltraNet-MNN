@@ -6,7 +6,6 @@
 
 #pragma once
 
-#include <opencv2/opencv.hpp>
 #include <algorithm>
 #include <iostream>
 #include <string>
@@ -32,7 +31,7 @@ public:
 
     //~UltraFace();
 
-    int detect(cv::Mat &raw_image, std::vector<FaceInfo> &face_list);
+    int detect(unsigned char *raw_image, int width, int height, int channel, std::vector<FaceInfo> &face_list);
 
     void generateBBox(std::vector<FaceInfo> &bbox_collection,  std::vector<float> scores, std::vector<float> boxes);
 

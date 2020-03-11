@@ -51,21 +51,15 @@ UltraFace::UltraFace(std::string &mnn_path,
     num_anchors = priors.size();
 
     ultra_net.load_param(mnn_path, num_thread);
-    ultra_net.set_params(1, 1, mean_vals, norm_vals);
+    ultra_net.set_params(0, 1, mean_vals, norm_vals);
 
 }
 
-int UltraFace::detect(cv::Mat &raw_image, std::vector<FaceInfo> &face_list ) {
-    if (raw_image.empty()) {
-        LOGD("raw_image image is null");
-        return -1;
-    }
+int UltraFace::detect(unsigned char *data, int width, int height, int channel, std::vector<FaceInfo> &face_list ) {
 
-    image_h = raw_image.rows;
-    image_w = raw_image.cols;
-    cv::Mat image;
 
-    cv::resize(raw_image, image, cv::Size(in_w, in_h));
+    image_h = height;
+    image_w = width;
 
     Inference_engine_tensor  out;
 
@@ -75,7 +69,7 @@ int UltraFace::detect(cv::Mat &raw_image, std::vector<FaceInfo> &face_list ) {
     string boxes = "boxes";
     out.add_name(boxes);
 
-    ultra_net.infer_img(image, out);
+    ultra_net.infer_img(data, width, height, channel, in_w, in_h, out);
 
     std::vector<FaceInfo> bbox_collection;
     generateBBox(bbox_collection, out.score(0) , out.score(1));

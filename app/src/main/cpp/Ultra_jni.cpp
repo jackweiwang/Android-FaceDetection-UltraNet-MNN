@@ -83,25 +83,10 @@ Java_com_facesdk_FaceSDKNative_FaceDetect(JNIEnv *env, jobject instance, jbyteAr
         return NULL;
     }
 
-    //channel
-    cv::Mat srcmatimg;
-    unsigned char *faceImageCharDate = (unsigned char*)imageDate;
-    if(imageChannel==3)
-    {
-        cv::Mat temp_mat(imageHeight, imageWidth, CV_8UC3, faceImageCharDate);
-        cvtColor(temp_mat, srcmatimg, CV_RGB2BGR);
-    }else if(imageChannel==4){
-
-        cv::Mat temp_mat(imageHeight, imageWidth, CV_8UC4, faceImageCharDate);
-        cvtColor(temp_mat, srcmatimg, CV_RGBA2BGR);
-    }else{
-        LOGD("img data format error, channel just support 3 or 4");
-        return NULL;
-    }
 
     std::vector<FaceInfo> face_info;
-
-    ultra ->detect(srcmatimg, face_info);
+    //detect face
+    ultra ->detect((unsigned char*)imageDate, imageWidth, imageHeight, imageChannel, face_info );
 
     int32_t num_face = static_cast<int32_t>(face_info.size());
 

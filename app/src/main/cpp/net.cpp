@@ -69,21 +69,27 @@ int Inference_engine::set_params(int srcType, int dstType,
 }
 
 // infer
-int Inference_engine::infer_img(cv::Mat& img, Inference_engine_tensor& out)
+int Inference_engine::infer_img(unsigned char *data, int width, int height, int channel, int dstw, int dsth, Inference_engine_tensor& out)
 {
     MNN::Tensor* tensorPtr = netPtr->getSessionInput(sessionPtr, nullptr);
-
+    MNN::CV::Matrix transform;
     // auto resize for full conv network.
     bool auto_resize = false;
     if ( !auto_resize )
     {
-        std::vector<int>dims = { 1, img.channels(), img.rows, img.cols };
+        std::vector<int>dims = { 1, c, dsth, dstw };
         netPtr->resizeTensor(tensorPtr, dims);
         netPtr->resizeSession(sessionPtr);
     }
 
-    std::unique_ptr<MNN::CV::ImageProcess> process(MNN::CV::ImageProcess::create(MNN::CV::BGR, MNN::CV::RGB, config.mean, 3, config.normal, 3));
-    process->convert((const unsigned char*)img.data, img.cols, img.rows, img.step[0], tensorPtr);
+    transform.postScale(1.0f/dstw, 1.0f/dsth);
+    transform.postScale(w, h);
+
+    std::unique_ptr<MNN::CV::ImageProcess> process(MNN::CV::ImageProcess::create(config.sourceFormat, config.destFormat, config.mean, 3, config.normal, 3));
+
+    process->setMatrix(transform);
+
+    process->convert(data, w, h, w*c, tensorPtr);
     netPtr->runSession(sessionPtr);
 
     for (int i = 0; i < out.layer_name.size(); i++)
