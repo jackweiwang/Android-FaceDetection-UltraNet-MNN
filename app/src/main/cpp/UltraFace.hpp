@@ -33,7 +33,7 @@ public:
 
     int detect(unsigned char *raw_image, int width, int height, int channel, std::vector<FaceInfo> &face_list);
 
-    void generateBBox(std::vector<FaceInfo> &bbox_collection,  std::vector<float> scores, std::vector<float> boxes);
+    void generateBBox(std::vector<FaceInfo> &bbox_collection,  float* scores, float* boxes);
 
     void nms(std::vector<FaceInfo> &input, std::vector<FaceInfo> &output, int type = blending_nms);
 

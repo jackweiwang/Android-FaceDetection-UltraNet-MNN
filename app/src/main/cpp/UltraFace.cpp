@@ -72,13 +72,13 @@ int UltraFace::detect(unsigned char *data, int width, int height, int channel, s
     ultra_net.infer_img(data, width, height, channel, in_w, in_h, out);
 
     std::vector<FaceInfo> bbox_collection;
-    generateBBox(bbox_collection, out.score(0) , out.score(1));
+    generateBBox(bbox_collection, out.score(0).get() , out.score(1).get());
     //LOGD("bbox_collection == %d", bbox_collection.size());
     nms(bbox_collection, face_list);
     return 0;
 }
 
-void UltraFace::generateBBox(std::vector<FaceInfo> &bbox_collection, std::vector<float> scores, std::vector<float> boxes) {
+void UltraFace::generateBBox(std::vector<FaceInfo> &bbox_collection, float* scores, float* boxes) {
     for (int i = 0; i < num_anchors; i++) {
         if (scores[i * 2 + 1 ] > score_threshold) {
 

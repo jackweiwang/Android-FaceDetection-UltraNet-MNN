@@ -1,6 +1,7 @@
 ## Face detection android
     v1.0
     v1.1 remove opencv
+	v1.2 inference reduction about 20ms
 ## Platform 
     android
 ## master

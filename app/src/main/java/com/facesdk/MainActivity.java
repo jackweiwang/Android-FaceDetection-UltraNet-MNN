@@ -132,10 +132,10 @@ public class MainActivity extends Activity {
                        int left, top, right, bottom;
                        Canvas canvas = new Canvas(drawBitmap);
                        Paint paint = new Paint();
-                       left = faceInfo[1+9*i];
-                       top = faceInfo[2+9*i];
-                       right = faceInfo[3+9*i];
-                       bottom = faceInfo[4+9*i];
+                       left = faceInfo[1+4*i];
+                       top = faceInfo[2+4*i];
+                       right = faceInfo[3+4*i];
+                       bottom = faceInfo[4+4*i];
                        paint.setColor(Color.RED);
                        paint.setStyle(Paint.Style.STROKE);
                        paint.setStrokeWidth(5);

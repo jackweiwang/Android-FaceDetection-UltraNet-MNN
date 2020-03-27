@@ -90,15 +90,15 @@ Java_com_facesdk_FaceSDKNative_FaceDetect(JNIEnv *env, jobject instance, jbyteAr
 
     int32_t num_face = static_cast<int32_t>(face_info.size());
 
-    int out_size = 1+num_face*9;
+    int out_size = 1+num_face*4;
     int *allfaceInfo = new int[out_size];
     allfaceInfo[0] = num_face;
     for (int i=0; i<num_face; i++) {
 
-        allfaceInfo[9*i+1] = face_info[i].x1;//left
-        allfaceInfo[9*i+2] = face_info[i].y1;//top
-        allfaceInfo[9*i+3] = face_info[i].x2;//right
-        allfaceInfo[9*i+4] = face_info[i].y2;//bottom
+        allfaceInfo[4*i+1] = face_info[i].x1;//left
+        allfaceInfo[4*i+2] = face_info[i].y1;//top
+        allfaceInfo[4*i+3] = face_info[i].x2;//right
+        allfaceInfo[4*i+4] = face_info[i].y2;//bottom
 
     }
 

@@ -110,9 +110,10 @@ int Inference_engine::infer_img(unsigned char *data, int width, int height, int 
         tensor->copyToHostTensor(hostTensor.get());
         tensor = hostTensor.get();
 
-        auto size = tensor->elementSize();
-        for(int i=0 ; i < size * sizeof(float); i++ )
-            destPtr.push_back(tensorOutPtr->host<float>()[i]);
+        auto size = tensorOutPtr->elementSize();
+        std::shared_ptr<float> destPtr(new float[size * sizeof(float)]);
+
+        ::memcpy(destPtr.get(), tensorOutPtr->host<float>(), size * sizeof(float));
 
         out.out_feat.push_back(destPtr);
     }
