@@ -44,7 +44,7 @@ Java_com_facesdk_FaceSDKNative_FaceDetectionModelInit(JNIEnv *env, jobject insta
     //slim-320
     //slim-320-quant-ADMM-50
     // change names
-    string str = tFaceModelDir + "RFB-320.mnn";
+    string str = tFaceModelDir + "RFB-320-quant-ADMM-32.mnn";
 
     ultra = new  UltraFace(str, 320, 240, 4, 0.65 ); // config model input
 

@@ -21,14 +21,14 @@ public:
     {
         layer_name.push_back(layer);
     }
-    std::share_ptr<float> score(int idx)
+    std::shared_ptr<float> score(int idx)
     {
         return out_feat[idx];
     }
 
 public:
     std::vector<std::string> layer_name;
-    std::vector<std::share_ptr<float>> out_feat;
+    std::vector<std::shared_ptr<float>> out_feat;
 };
 
 class Inference_engine

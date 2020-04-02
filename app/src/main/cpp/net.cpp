@@ -73,6 +73,10 @@ int Inference_engine::infer_img(unsigned char *data, int width, int height, int 
 {
     MNN::Tensor* tensorPtr = netPtr->getSessionInput(sessionPtr, nullptr);
     MNN::CV::Matrix transform;
+
+    int h = height;
+    int w = width;
+    int c = channel;
     // auto resize for full conv network.
     bool auto_resize = false;
     if ( !auto_resize )
@@ -105,7 +109,6 @@ int Inference_engine::infer_img(unsigned char *data, int width, int height, int 
 
         auto tensor = reinterpret_cast<MNN::Tensor*>(tensorOutPtr);
 
-        std::vector <float> destPtr;
         std::unique_ptr<MNN::Tensor> hostTensor(new MNN::Tensor(tensor, tensor->getDimensionType(), true));
         tensor->copyToHostTensor(hostTensor.get());
         tensor = hostTensor.get();
