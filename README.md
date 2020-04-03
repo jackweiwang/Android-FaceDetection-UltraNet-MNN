@@ -4,7 +4,7 @@
 	v1.2 inference reduction about 20ms
 ## Platform 
     android
-## master
+## Master
 [Ultra-Light-Fast-Generic-Face-Detector-1MB](https://github.com/Linzaer/Ultra-Light-Fast-Generic-Face-Detector-1MB) with [MNN](https://github.com/alibaba/MNN)
 
 ## Build
