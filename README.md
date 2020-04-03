@@ -14,4 +14,4 @@ Android Studio Build.
 ![](res_img/result.jpg)
 
 ## MNN Lib Version 
-    0.2.1.7
+    0.2.2.1
