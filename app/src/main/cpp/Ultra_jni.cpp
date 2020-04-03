@@ -43,7 +43,7 @@ Java_com_facesdk_FaceSDKNative_FaceDetectionModelInit(JNIEnv *env, jobject insta
     //RFB-320-quant-KL-5792
     //slim-320
     //slim-320-quant-ADMM-50 
-    //目前量化模型存在问题，会在之后的版本修复
+    //量化模型需要使用CPU方式 net.cpp中修改 sch_config.type = (MNNForwardType)MNN_FORWARD_CPU
     // change names
     string str = tFaceModelDir + "RFB-320.mnn";
 

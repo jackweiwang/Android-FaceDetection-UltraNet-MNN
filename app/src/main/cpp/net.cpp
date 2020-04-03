@@ -32,8 +32,8 @@ int Inference_engine::load_param(std::string & file, int num_thread)
             if (nullptr == netPtr) return -1;
 
             MNN::ScheduleConfig sch_config;
-            sch_config.type = (MNNForwardType)MNN_FORWARD_OPENCL;
-            //sch_config.type = (MNNForwardType)MNN_FORWARD_CPU;
+            //sch_config.type = (MNNForwardType)MNN_FORWARD_OPENCL;
+            sch_config.type = (MNNForwardType)MNN_FORWARD_CPU;
             if ( num_thread > 0 )sch_config.numThread = num_thread;
 
             MNN::BackendConfig backendConfig;
