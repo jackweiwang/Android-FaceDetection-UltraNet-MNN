@@ -17,7 +17,7 @@ include_directories(src/main/cpp/include
 					    							  
 add_library(MNN SHARED IMPORTED)
 add_library(MNN_CL SHARED IMPORTED)
-add_library(MNN_GL SHARED IMPORTED)
+#add_library(MNN_GL SHARED IMPORTED)
 
 set_target_properties(MNN
   PROPERTIES IMPORTED_LOCATION
@@ -25,9 +25,9 @@ set_target_properties(MNN
 set_target_properties(MNN_CL
   PROPERTIES IMPORTED_LOCATION
   ${CMAKE_SOURCE_DIR}/src/main/jniLibs/${ANDROID_ABI}/libMNN_CL.so)
-set_target_properties(MNN_GL
-  PROPERTIES IMPORTED_LOCATION
-  ${CMAKE_SOURCE_DIR}/src/main/jniLibs/${ANDROID_ABI}/libMNN_GL.so)
+#set_target_properties(MNN_GL
+#  PROPERTIES IMPORTED_LOCATION
+#  ${CMAKE_SOURCE_DIR}/src/main/jniLibs/${ANDROID_ABI}/libMNN_GL.so)
 
 add_library(facedetect SHARED src/main/cpp/Ultra_jni.cpp
                               src/main/cpp/UltraFace.cpp
@@ -39,7 +39,7 @@ add_definitions(-DMNN_USE_LOGCAT)
 target_link_libraries(facedetect
                        MNN
 					   MNN_CL
-					   MNN_GL
+					   #MNN_GL
 					   #lib_opencv
                        jnigraphics
                        z
