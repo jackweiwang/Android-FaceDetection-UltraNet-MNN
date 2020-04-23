@@ -39,13 +39,13 @@ Java_com_facesdk_FaceSDKNative_FaceDetectionModelInit(JNIEnv *env, jobject insta
     string tFaceModelDir = faceDetectionModelPath;
     string tLastChar = tFaceModelDir.substr(tFaceModelDir.length()-1, 1);
     //RFB-320
-    //RFB-320-quant-ADMM-320
+    //RFB-320-quant-ADMM-32
     //RFB-320-quant-KL-5792
     //slim-320
     //slim-320-quant-ADMM-50 
     //量化模型需要使用CPU方式 net.cpp中修改 sch_config.type = (MNNForwardType)MNN_FORWARD_CPU
     // change names
-    string str = tFaceModelDir + "RFB-320.mnn";
+    string str = tFaceModelDir + "RFB-320-quant-ADMM-32.mnn";
 
     ultra = new  UltraFace(str, 320, 240, 4, 0.65 ); // config model input
 
