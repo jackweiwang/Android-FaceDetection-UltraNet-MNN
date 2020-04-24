@@ -11,7 +11,13 @@
 Android Studio Build.
 
 ## Show Result
-![](res_img/result.jpg)
+Device | Input resolution
+-------| ---------
+Lenovo: PB2-690N | 320x240
+
+Model         | Inference(ms)
+----          | ----
+RFB-320-quant-ADMM-32.mnn | 35
 
 ## MNN Lib Version 
     0.2.2.1
